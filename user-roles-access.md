@@ -10,7 +10,7 @@
 ##### - {CanViewLicenses, CanSubmitLicenses, CanViewReports}
 #### ReadOnly - Read Permissions
 ##### - {CanViewLicenses, CanViewReports}
-
+-------------------------------------------------------------------------------------------------------------------------------------------
 
 ### 2. Create User Roles Table (SQL):
 ```
@@ -23,13 +23,13 @@
       CanViewReports BIT
   );
 ```
-
+-------------------------------------------------------------------------------------------------------------------------------------------
 
 ### 3. Assign Roles to Users Table (SQL):
 ```
   ALTER TABLE Users ADD RoleID INT;
 ```
-
+-------------------------------------------------------------------------------------------------------------------------------------------
 
 ### 4. Populate User Roles Table:
 ```
@@ -38,7 +38,7 @@
          ('Approver', 1, 0, 1, 1),
          ('User', 1, 0, 0, 1);
 ```
-
+-------------------------------------------------------------------------------------------------------------------------------------------
 
 ### 5. Fetch User Role in Power App:
 ```
@@ -47,7 +47,7 @@
   Set(CurrentUserRole, LookUp(Users, Email = CurrentUser.Email).RoleID);
   Set(UserPermissions, LookUp(UserRoles, RoleID = CurrentUserRole));
 ```
-
+-------------------------------------------------------------------------------------------------------------------------------------------
 
 ### 6. Control Access Based on Role (Power App):
 ```
@@ -69,6 +69,6 @@
   // Visible property of the License Reports button
   UserPermissions.CanViewReports
 ```
-
+-------------------------------------------------------------------------------------------------------------------------------------------
 
 
