@@ -1,20 +1,18 @@
 # Implementing User Roles into Power App
 
-## 1. Define User Roles:
-### User Roles:
-------------------------------------------------------------------------------------------------
-### Admin - Read, Write & Approve Permissions
-#### - {CanViewLicenses, CanSubmitLicenses, CanEditLicenses, CanApproveLicenses, CanViewReports}
-### Approver - Read & Approve Permissions
-#### - {CanViewLicenses, CanApproveLicenses, CanViewReports}
-### GeneralUser - Read & Write Permissions
-#### - {CanViewLicenses, CanSubmitLicenses, CanViewReports}
-### ReadOnly - Read Permissions
-#### - {CanViewLicenses, CanViewReports}
------------------------------------------------------------------------------------------------
+### 1. Define User Roles:
+#### User Roles:
+#### Admin - Read, Write & Approve Permissions
+##### - {CanViewLicenses, CanSubmitLicenses, CanEditLicenses, CanApproveLicenses, CanViewReports}
+#### Approver - Read & Approve Permissions
+##### - {CanViewLicenses, CanApproveLicenses, CanViewReports}
+#### GeneralUser - Read & Write Permissions
+##### - {CanViewLicenses, CanSubmitLicenses, CanViewReports}
+#### ReadOnly - Read Permissions
+##### - {CanViewLicenses, CanViewReports}
 
 
-### 2. Create User Roles Table:
+### 2. Create User Roles Table (SQL):
 ```
   CREATE TABLE UserRoles (
       RoleID INT PRIMARY KEY IDENTITY(1,1),
@@ -27,7 +25,7 @@
 ```
 
 
-### 3. Assign Roles to Users Table:
+### 3. Assign Roles to Users Table (SQL):
 ```
   ALTER TABLE Users ADD RoleID INT;
 ```
@@ -51,8 +49,7 @@
 ```
 
 
-### 6. Control Access Based on Role:
---------------------------------------------------------------------
+### 6. Control Access Based on Role (Power App):
 ```
   // Visible property of the License Management button
   UserPermissions.CanViewLicenses
@@ -72,6 +69,6 @@
   // Visible property of the License Reports button
   UserPermissions.CanViewReports
 ```
---------------------------------------------------------------------
+
 
 
